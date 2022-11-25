@@ -1,0 +1,66 @@
+                                          (REST)    Representation State Transfer
+casas  ---> ID_casa; zone
+{
+  "id": "01",
+  "zona": "campim",
+}
+{
+  "id": "02",
+  "zona": "monte",
+}
+{
+  "id": "03",
+  "zona": "RB",
+}
+
+pessaos ---> ID_pessoa; nome
+{
+  "id" "01"
+  "name" "geramy"
+}
+{
+  "id" "02"
+  "name" "Djay"
+}
+{
+  "id" "03"
+  "name" "Nilson"
+}
+
+animais ---> ID_animal; tipo
+{
+  "id" "01"
+  "tipo" "catxorr"
+}
+{
+  "id" "02"
+  "tipo" "Got"
+}
+{
+  "id" "03"
+  "tipo" ""
+}
+
+
+            info_sports/casas       
+            info_sports/casas/id
+
+            info_sports/pessaos       
+            info_sports/pessoas/id
+
+            info_sports/animais       
+            info_sports/animais/id
+
+            info_sports/
+
+
+Apresentacao 25 minutos
+
+Tema 
+
+demo
+consideracoes finais
+
+Perguntas Juri
+
+

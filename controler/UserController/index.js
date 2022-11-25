@@ -21,3 +21,40 @@ exports.create = async (req, res) => {
     }
 
 }
+
+//const array = [{"id": "01"," name" :" ana"}]
+//exports.list = async (request, response) => {
+
+     //const { name, email, password, profile_id } = req.body;
+
+    // try {
+    //     const user = await User.create(name, email, password, profile_id);    
+    
+        // response.status(201).json(array);
+    // } catch (error) {
+    //     res.status(500).json(
+    //         {
+    //             message: "Internal server error"
+    //         }
+    //     );
+    // }
+
+//}
+
+//exports.list_one = async (request, response) => {
+    //const id = "01"
+    //const { name, email, password, profile_id } = req.body;
+
+   // try {
+   //     const user = await User.create(name, email, password, profile_id);    
+   
+       // response.status(201).json(array);
+   // } catch (error) {
+   //     res.status(500).json(
+   //         {
+   //             message: "Internal server error"
+   //         }
+   //     );
+   // }
+
+

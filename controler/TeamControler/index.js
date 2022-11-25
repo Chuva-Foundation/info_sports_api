@@ -1,17 +1,28 @@
-const team = require('../../models/Student');
+const teams = require('../../models/teams');
 
-exports.get = async (req, res) => {
-
-    console.log('GET Team by Team Id:', req.userId);
-
-    const team = await team.get();
-
-    res.status(200).json(team);
-}
 
 exports.create = async (req, res) => {
 
-    const { } = 
+   console.log('Post Team by Team Id:', req.body);
 
+   const team = await teams.create(req.body);
+   res.status(201).json(team);
    
-  
+}
+
+exports.list = async (req, res) => {
+
+    console.log('GET Team :', req.params);
+
+    const team = await teams.get();
+    res.status(200).json(team);
+}
+
+ 
+ exports.listone = async (req, res) => {
+
+    console.log('GET Team by Id:', req.params);
+
+    const team = await teams.get_by_id(req.params.id);
+    res.status(200).json(team);
+ }
