@@ -15,19 +15,19 @@ class User {
         }
     }
 
-    // static async getByEmail(email) {
-    //     try {
-    //         const user = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+    static async getByEmail(email) {
+        try {
+            const user = await db.query("SELECT * FROM users WHERE email = $1", [email]);
 
-    //         return user.rows[0];
-    //     } catch (error) {
-    //         console.error(error.message);
-    //     }
-    // }
+            return user.rows[0];
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
-    // static async checkPassword(password, password_hash) {
-    //     return await bcrypt.compare(password, password_hash);
-    // }
+    static async checkPassword(password, password_hash) {
+        return await bcrypt.compare(password, password_hash);
+    }
 }
 
 module.exports = User;

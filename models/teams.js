@@ -1,6 +1,5 @@
 const db = require('../config/database');
 
-const teamlist = [{name: "team 1", id : 1 }, {name: "team 2", id : 2} ]
 
 class teams {
 
@@ -11,36 +10,38 @@ class teams {
             return teams.rows;
         } catch (error) {
             console.error(error.message);
+            return error.message;
         }
 
-        return teamlist;
+
     }
     
 
     static async create(name, date, id_zone) {
          try {
-          await db.query("INSERT INTO teams (name, date, id_zone) VALUES($1, $2, $3) RETURNING *", [name, email, id_zone]);  
+         const newTeam = await db.query("INSERT INTO teams (name, birth_date, zone_id) VALUES($1, $2, $3) RETURNING *", [name, date, id_zone]);  
+         return newTeam.rows
         } catch (error) {
             console.error(error.message);
+            return error.message
     }
-
-        teamlist.push({
-            name, date, id_zone
-        })
+    }
     
 
-    //  static async get_by_id(id){
-    //     console.log("team_id", typeof id)
-    
-    //     const response = teamlist.filter((team) => team.id === Number(id));
-    //     console.log('response', response);
-    //     return response;
-    // }
+     static async get_by_id(id){    
+        try {
+            const Team = await db.query("SELECT * FROM teams WHERE id=$1", [id]);  
+            return Team.rows;
+           } catch (error) {
+               console.error(error.message);
+               return error.message
+       }
+    }
    
 
  }
  
-}
+
     
 
 module.exports = teams;

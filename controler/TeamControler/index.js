@@ -4,8 +4,9 @@ const teams = require('../../models/teams');
 exports.create = async (req, res) => {
 
    console.log('Post Team by Team Id:', req.body);
-
-   const team = await teams.create(req.body);
+   const {name,date,id_zone} = req.body
+   const team = await teams.create(name,date,id_zone);
+   
    res.status(201).json(team);
    
 }
@@ -20,9 +21,8 @@ exports.list = async (req, res) => {
 
  
  exports.listone = async (req, res) => {
-
-    console.log('GET Team by Id:', req.params);
-
-    const team = await teams.get_by_id(req.params.id);
-    res.status(200).json(team);
+   const id = req.params.id
+   const team = await teams.get_by_id(id);
+   
+   res.status(200).json(team);
  }

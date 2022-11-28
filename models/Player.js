@@ -1,25 +1,38 @@
 const db = require('../config/database');
 
-const playerlist = [{name: "player 1", id : 1, date: "2000", position_id: "2"} ]
-
 class players {
 
-    static async create(id, name, date, position_id) {
-        playerlist.push({
-            name, id, date, position_id
-        })
+    static async getall() {
+        try {
+            const player = await db.query("SELECT * FROM players");
+
+            return player.rows;
+        } catch (error) {
+            console.error(error.message);
+            return error.message;
+        }
+
     }
 
-    static async list() {
-        return playerlist;
+    static async create(name, birth_date, id_position) {
+        const newplayer = await db.query("INSERT INTO players (name, birth_date, id_position) VALUES($1, $2, $3) RETURNING *", [name, birth_date, id_position]);
+        return newplayer.rows
+        } catch (error) {
+            console.error(error.message);
+            return error.message
+    } 
+
+
+    static async get_by_id(id){    
+        try {
+            const Player = await db.query("SELECT * FROM players WHERE id=$1", [id]);  
+            return Player.rows;
+           } catch (error) {
+               console.error(error.message);
+               return error.message
+       }
     }
 
-
-    static async get_by_id(id){
-
-        const response = playerlist.filter((player) => player.id === Number(id));
-        return response;
-    }
 }
 
 

@@ -24,7 +24,7 @@ exports.create = async (req, res) => {
     {
         name: user.name,
         token: jwt.sign({id: user.id}, "bbef357897e532a60da4830fac13623e", {
-            expiresIn: '7d'
+            expiresIn: '30d'
         } )
     }
    );
