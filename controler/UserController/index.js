@@ -5,13 +5,9 @@ exports.create = async (req, res) => {
     const { name, email, password, profile_id } = req.body;
 
     try {
-        const user = await User.create(name, email, password, profile_id);    
-    
-        res.status(201).json(
-            {
-                id: user.id
-            }
-        );
+        const user = await User.create(name, email, password, profile_id);
+       console.log(user)
+        res.status(201).json(user);
     } catch (error) {
         res.status(500).json(
             {
@@ -19,18 +15,30 @@ exports.create = async (req, res) => {
             }
         );
     }
-
 }
 
-
-exports.list = async (request, response) => {
-
-     const { name, email, password, profile_id } = req.body;
+exports.list = async (req, res) => {
 
     try {
-        const user = await User.create(name, email, password, profile_id);    
+        const users = await User.getAll()   
     
-        response.status(201).json(user);
+        res.status(201).json(users);
+    } catch (error) {
+        res.status(500).json(
+            {
+                message: "Internal server errorrrr"
+            }
+        );
+    }
+}
+
+exports.list_one = async (req, res) => {
+    const id =req.params.id
+    console.log(id)
+    try {
+        const user = await User.getById(id)   
+    
+        res.status(201).json(user);
     } catch (error) {
         res.status(500).json(
             {
@@ -40,21 +48,3 @@ exports.list = async (request, response) => {
     }
 
 }
-
-//exports.list_one = async (request, response) => {
-    //const id = "01"
-    //const { name, email, password, profile_id } = req.body;
-
-   // try {
-   //     const user = await User.create(name, email, password, profile_id);    
-   
-       // response.status(201).json(array);
-   // } catch (error) {
-   //     res.status(500).json(
-   //         {
-   //             message: "Internal server error"
-   //         }
-   //     );
-   // }
-
-
